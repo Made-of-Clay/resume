@@ -5,7 +5,7 @@ import App from './App.vue'
 Vue.use(VueMaterial)
 Vue.material.registerTheme('default', {
   primary: 'indigo',
-  accent: 'amber',
+  accent: 'deep-orange',
   warn: 'red',
   background: 'white'
 })
