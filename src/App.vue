@@ -19,12 +19,7 @@
       </md-button>
     </md-toolbar>
 
-    <!-- TODO: add component for portfolio stuff -->
-    <!-- portfolio at xlarge has viewer and thumbs side-by-side
-    portfolio at large may move beneath viewer (or just shrink row count of thumbs)
-    portfolio at medium moves thumbs beneath preview and shrinks preview dims some
-    portfolio at small has thumbs beneath preview and scrolling horizontally
-    portfolio at xsmall has thumbs beneath preview and scrolling horizontally -->
+    <my-portfolio></my-portfolio>
 
     <div id="contact-dialog" class="dialog-content"></div>
     <div id="about-dialog" class="dialog-content"></div>
@@ -34,8 +29,13 @@
 
 -->
 <script>
+import Portfolio from './Portfolio.component.vue';
+
 export default {
   name: 'app',
+  components: {
+    'my-portfolio': Portfolio
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
