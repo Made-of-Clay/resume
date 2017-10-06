@@ -12,39 +12,39 @@
         <p>large image here</p>
         <p>thumbnails here</p>
 
-        <div v-for="(entry, index) in info" style="border-bottom:1px solid">
-            Title: {{entry.title}} <br>
-            Desc: <span v-html="entry.desc"></span><br>
-            <a :href="entry.link">Link</a> <br>
+        <figure id="preview-image"
+            v-show="imageSelected">
 
-            <div id="preview-image">
-                <img :src="entry.src" 
-                    :id="buildID(index)"
-                    :alt="entry.title"
-                    @click="showImage(index)">
+            <img :src="selected.src"
+                :alt="selected.caption"
+                @click="showImage(selectedIndex)">
+            <figcaption v-html="selected.desc"></figcaption>
+        </figure>
+
+        <div id="gallery-thumbs">
+            <div v-for="(entry, index) in info" class="thumb">
+                <img :src="entry.src"
+                    :alt="entry.caption"
+                    @click="focus(index)">
             </div>
         </div>
 
-        <md-dialog ref="dialog"
-            md-open-from="preview-image"
-            md-close-to="preview-image">
-            
-            <md-dialog-title>{{selected.title}}</md-dialog-title>
-
-            <md-dialog-content>
-                <img id="full-image"
-                    :src="selected.src"
-                    :alt="selected.title">
-            </md-dialog-content>
-        </md-dialog>
+        <lightbox ref="lightbox"
+            :images="info"
+            :show-caption="true"
+            :showLightBox="false"></lightbox>
     </main>
 </template>
 
 <script>
 import info from './portfolio-info.js';
+import Lightbox from 'vue-image-lightbox';
 
 export default {
     name: 'Portfolio',
+    components: {
+        Lightbox,
+    },
     data() {
         return {
             info,
@@ -54,25 +54,32 @@ export default {
     computed: {
         selected() {
             let fakeSelected = {
-                title: '',
+                caption: '',
                 desc: '',
                 link: '',
                 src: ''
             };
-            return (this.selectedIndex >= 0) 
-                ? this.info[selectedIndex] 
+            return (this.imageSelected) 
+                ? this.info[this.selectedIndex] 
                 : fakeSelected;
+        },
+        imageSelected() {
+            return this.selectedIndex > 0;
         },
     },
     methods: {
         buildID(index) {
             if (isUndefined(index)) return '';
 
-            return this.info[index].title.toLowerCase().replace(/ /g, '_');
+            return this.info[index].caption.toLowerCase().replace(/ /g, '_');
         },
         showImage(index) {
+            this.$refs.lightbox.showImage(index);
+        },
+        focus(index) {
+            console.log("index", index);
+            console.log("this.selectedIndex", this.selectedIndex);
             this.selectedIndex = index;
-            this.$refs.dialog.open();
         },
     },
 };
@@ -87,3 +94,19 @@ function goodIndex(value) {
     return value > -1;
 }
 </script>
+
+<style>
+#gallery-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.thumb {
+    display: block;
+    margin: 0.25em;
+    max-width: 100px;
+}
+.thumb > img {
+    object-fit: contain;
+}
+</style>
