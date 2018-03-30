@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>adamleis</title>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="/dist/css/vue-material.css">
-    <link rel="stylesheet" href="/dist/css/vue-image-lightbox.min.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/dist/build.js"></script>
-  </body>
+<html>
+<head>
+    <title>Adam Leis</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            background: linear-gradient(#bdd7ec, #a2b8ca);
+            margin: 0;
+            padding: 1px;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            text-shadow: 
+                1px 1px 1px hsla(214, 100%, 9%, 1),
+                0 0 10px hsla(214, 100%, 9%, 0.5);
+        }
+        #message {
+            background: linear-gradient(#539bfb, #326ab5);
+            border-radius: 50%;
+            box-shadow: 
+                0 4px 4px hsla(214, 100%, 9%, 0.8),
+                0 8px 20px hsla(214, 100%, 9%, 0.5);
+            color: white;
+            height: 500px;
+            margin: 0 auto;
+            padding: 5em 2em 1em;
+            text-align: center;
+            transition: transform 0.75s;
+            transform: rotate(-360deg) scale(0);
+            width: 500px;
+        }
+        #message.animating {
+            transform: rotate(0deg) scale(1);
+        }
+        p:nth-child(1) {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        p:nth-child(2) {
+            margin-top: 5em;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>The personal website of Adam Leis</h1>
+
+        <div id="message">
+            <p>Hi there!</p>
+            <p>I am in the middle of updating my website (and changing hosts), so the content on my website will not be available for a bit. Check back again soon!</p>
+            <p><small>Updated 3/30/2018</small></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let msg = document.getElementById('message');
+            setTimeout(() => {
+                msg.classList.add('animating');
+                // msg.classList.remove('animating');
+            }, 100);
+        });
+    </script>
+</body>
 </html>
