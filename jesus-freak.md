@@ -24,9 +24,9 @@ All entries related to 1st century AD
     - Essenes ?
     - contrasting concepts (light/dark; good/evil)
     - concepts of Truth, Life
-- Carpentry *
-- Social System *
-- Roman presence in Judea *
+- Carpentry
+- Social System
+- Roman presence in Judea
 - Farming Practices
     - planting & sowing
     - masters & servants
@@ -42,7 +42,7 @@ Many books, articles, essays, etc... exist on Jesus. Dig in.
 
 * *Resources I already possess*
 
-- Jesus Centered Life *
-- Humility *
-- (Cross of Christ book I cannot think of) *
+- Jesus Centered Life
+- Humility
+- (Cross of Christ book I cannot think of)
 - Bible Believers Archaelogy (all volumes)
