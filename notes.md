@@ -39,24 +39,35 @@ and optimization plugins/code for queries
 
 ## Design Ideas
 Sections will be large blocks of content (scrolling is fact of life today); easily responsive
+
 Large photos (woo responsive image opportunity!)
+
 Favor light background w/ forest-y greens & maybe some blues?
+
 Very minor use of rich, bright red color too; just don't miscommunicate "error!"
+
 Header bar/nav could use the green(s) and have a cool geometric, subtle node-grid background (think Codepen canvas node experiments)
+
 SUPER cool header bar would be canvas bg w/ animating nodes like in Codepen (give props to who you borrow from)
-    make it as a component for easy portability
+- make it as a component for easy portability
 
 ## Blog & Portfolio
 Treat as separate git project? Reason for this is use of subdomains
 
 ### Portfolio
 Single-page, no apparent section changes
+
 List of entries, thumbnails per entry
+
 Click thumbnail expands to fullscreen view w/ nav from there too (and details)
+
 Maybe brief blerb on entry to the side?
+
 Search/filter available too
 
 ### Blog
 SPA w/ area navigation (categories, tags, search, recent posts, specific post)
+
 Use Vuex/Router combo (w/ history state if easy enough)
+
 Basically make WP blog w/ Vue front-end
