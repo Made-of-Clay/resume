@@ -65,6 +65,8 @@ Maybe brief blerb on entry to the side?
 
 Search/filter available too
 
+Portfolio entries come from Media w/ category "Portfolio" - captions can be added as well
+
 ### Blog
 SPA w/ area navigation (categories, tags, search, recent posts, specific post)
 
