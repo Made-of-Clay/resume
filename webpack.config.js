@@ -6,6 +6,10 @@ const webpack = require('webpack');
 const distPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 
+////////////////////////////////////////////
+// look into extracting css to built file
+////////////////////////////////////////////
+
 module.exports = {
     entry: './src/main.js',
     output: {
