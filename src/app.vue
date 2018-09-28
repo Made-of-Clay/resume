@@ -15,7 +15,8 @@
 
         welcome, small about, big photo background?
         <section id="welcome">
-            content from wordpress page goes here?
+            content from wordpress page goes here? (http://api.adamleis.com/wp-json/wp/v2/pages/)
+            TODO: write service for fetching data from wp api
         </section>
 
         <section id="portfolio">
