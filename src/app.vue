@@ -8,7 +8,8 @@
                     :href="`#${section}`"
                     class="section-link"
                     @click.prevent="scrollTo(section)"
-                >
+                    v-text="section"
+                ></a>
             </nav>
         </header>
 
@@ -77,5 +78,9 @@ li {
 
 a {
     color: #42b983;
+}
+
+.section-link {
+    text-transform: capitalize;
 }
 </style>
