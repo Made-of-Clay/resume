@@ -1,11 +1,13 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+
+const distPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        path: distPath,
+        publicPath: distPath,
         filename: 'build.js'
     },
     module: {
@@ -38,6 +40,12 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
+    plugins: [
+        new HtmlWebpackPlugin({ // updates index.phtml w/ hashed files
+            filename: path.resolve(distPath, 'index.html'),
+            template: path.resolve(__dirname, 'index.html'),
+        }),
+    ],
     devServer: {
         historyApiFallback: true,
         noInfo: true
@@ -46,10 +54,10 @@ module.exports = {
         hints: false
     },
     devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map'
+    module.exports.devtool = '#source-map';
     // http://vue-loader.vuejs.org/en/workflow/production.html
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.DefinePlugin({
@@ -66,5 +74,5 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
-    ])
+    ]);
 }
