@@ -1,7 +1,6 @@
 <template>
     <main>
-        <header id="site-header" class="main-header">
-            <canvas></canvas>
+        <fancy-header id="site-header" class="main-header">
             <nav>
                 <a
                     v-for="section in sectionLinks"
@@ -11,7 +10,7 @@
                     v-text="section"
                 ></a>
             </nav>
-        </header>
+        </fancy-header>
 
         welcome, small about, big photo background?
         <section id="welcome">
@@ -35,7 +34,13 @@
 </template>
 
 <script>
+import fancyHeader from './fancy-header';
+
 export default {
+    components: {
+        fancyHeader,
+    },
+
     data() {
         return {
             sectionLinks: [
