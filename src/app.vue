@@ -23,7 +23,33 @@
         </section>
 
         <section id="blog">
-            ;
+            <ul class="blog-posts">
+                <li
+                    v-for="post in recentPosts"
+                    v-if="recentPosts.length"
+                    class="blog-post"
+                    :data-postid="post.id"
+                >
+                    <!-- img -->
+                    <h1 class="blog-post__title">{{post.title.rendered}}</h1>
+                    <div
+                        class="blog-post__excerpt"
+                        v-html="post.excerpt.rendered">
+                    </div>
+                    <time
+                        :datetime="post.date"
+                        class="blog-post__date"
+                    >
+                        post.date | postDate
+                    </time>
+                </li>
+                <li
+                    v-else
+                    class="blog-post blog-post--no-posts"
+                >
+                    No posts are available at this time
+                </li>
+            </ul>
         </section>
 
         
@@ -35,8 +61,31 @@
 
 <script>
 import fancyHeader from './fancy-header';
+import BlogService from './services/BlogService';
+
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
 
 export default {
+    filters: {
+        postDate(dateTime) {
+            const date = new Date(dateTime);
+            return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+        },
+    },
+
     components: {
         fancyHeader,
     },
@@ -49,18 +98,32 @@ export default {
                 'blog',
                 'contact',
             ],
+
+            recentPosts: [],
         };
+    },
+
+    created() {
+        this.getPosts();
     },
 
     methods: {
         scrollTo(section) {
             // window scrollto logic
         },
+
+        getPosts() {
+            const blog = new BlogService();
+            blog.getPosts().then(posts => {
+                // filter out "Welcome" post
+                this.recentPosts = posts.filter(post => post.id !== 7);
+            });
+        },
     },
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -88,5 +151,18 @@ a {
 
 .section-link {
     text-transform: capitalize;
+}
+
+.blog-posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.blog-post__date {
+    &::before {
+        content: 'Posted:';
+        display: inline-block;
+        margin-right: 0.5em;
+    }
 }
 </style>
