@@ -32,8 +32,23 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: srcPath,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                { "modules": false }
+                            ],
+                        ],
+                        plugins: [
+                            "@babel/plugin-syntax-import-meta",
+                            ["@babel/plugin-proposal-class-properties", { "loose": false }],
+                        ],
+                        comments: true,
+                    }
+                }
             },
             {
                 test: /\.[s]?css$/,
