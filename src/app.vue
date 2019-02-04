@@ -1,6 +1,6 @@
 <template>
     <main>
-        <fancy-header id="site-header" class="main-header">
+        <!-- <fancy-header id="site-header" class="main-header">
             <nav>
                 <a
                     v-for="section in sectionLinks"
@@ -10,7 +10,10 @@
                     v-text="section"
                 ></a>
             </nav>
-        </fancy-header>
+        </fancy-header> -->
+        <header>
+            Some Header
+        </header>
 
         welcome, small about, big photo background?
         <section id="welcome">
@@ -19,7 +22,7 @@
         </section>
 
         <section id="portfolio">
-            ;
+            PORTFOLIO
         </section>
 
         <section id="blog">
@@ -54,7 +57,7 @@
 
         
         <section id="contact">
-            ;
+            CONTACT
         </section>
     </main>
 </template>
