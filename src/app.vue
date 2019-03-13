@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <v-app>
         <!-- <fancy-header id="site-header" class="main-header">
             <nav>
                 <a
@@ -11,55 +11,14 @@
                 ></a>
             </nav>
         </fancy-header> -->
-        <header>
-            Some Header
-        </header>
+        <v-toolbar color="primary">
+            <h1 class="title my-0">
+                Adam Leis
+            </h1>
+        </v-toolbar>
 
-        welcome, small about, big photo background?
-        <section id="welcome">
-            content from wordpress page goes here? (http://api.adamleis.com/wp-json/wp/v2/pages/)
-            TODO: write service for fetching data from wp api
-        </section>
-
-        <section id="portfolio">
-            PORTFOLIO
-        </section>
-
-        <section id="blog">
-            <ul class="blog-posts">
-                <li
-                    v-for="post in recentPosts"
-                    v-if="recentPosts.length"
-                    class="blog-post"
-                    :data-postid="post.id"
-                >
-                    <!-- img -->
-                    <h1 class="blog-post__title">{{post.title.rendered}}</h1>
-                    <div
-                        class="blog-post__excerpt"
-                        v-html="post.excerpt.rendered">
-                    </div>
-                    <time
-                        :datetime="post.date"
-                        class="blog-post__date"
-                    >
-                        post.date | postDate
-                    </time>
-                </li>
-                <li
-                    v-else
-                    class="blog-post blog-post--no-posts"
-                >
-                    No posts are available at this time
-                </li>
-            </ul>
-        </section>
-
-        
-        <section id="contact">
-            CONTACT
-        </section>
-    </main>
+        <router-view />
+    </v-app>
 </template>
 
 <script>
