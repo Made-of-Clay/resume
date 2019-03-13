@@ -20,11 +20,31 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ],
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    'sass-loader'
+              ],
+            },
+            {
                 test: /\.vue$/,
                 include: srcPath,
                 loader: 'vue-loader',
                 options: {
                     loaders: {
+                        scss: [
+                            'vue-style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ],
                     }
                     // other vue-loader options go here
                 }
@@ -50,15 +70,15 @@ module.exports = {
                     }
                 }
             },
-            {
-                test: /\.[s]?css$/,
-                include: srcPath,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
-            },
+            // {
+            //     test: /\.[s]?css$/,
+            //     include: srcPath,
+            //     use: [
+            //         'vue-style-loader',
+            //         'css-loader',
+            //         'sass-loader',
+            //     ],
+            // },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
