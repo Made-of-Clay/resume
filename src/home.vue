@@ -14,13 +14,12 @@
 
         <section id="blog">
             <ul class="blog-posts">
-                <li
+                <!-- <li
                     v-for="post in recentPosts"
                     v-if="recentPosts.length"
                     class="blog-post"
                     :data-postid="post.id"
                 >
-                    <!-- img -->
                     <h1 class="blog-post__title">{{post.title.rendered}}</h1>
                     <div
                         class="blog-post__excerpt"
@@ -38,7 +37,7 @@
                     class="blog-post blog-post--no-posts"
                 >
                     No posts are available at this time
-                </li>
+                </li> -->
             </ul>
         </section>
 

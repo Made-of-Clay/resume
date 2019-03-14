@@ -7,8 +7,6 @@ import app from './app';
 import mocPortfolio from './portfolio';
 import mocHome from './home';
 
-console.log('main is running');
-
 Vue.use(Vuetify);
 Vue.use(VueRouter);
 
