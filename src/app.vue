@@ -11,7 +11,7 @@
                 ></a>
             </nav>
         </fancy-header> -->
-        <v-toolbar color="primary">
+        <v-toolbar color="primary" dense>
             <h1 class="title my-0">
                 Adam Leis
             </h1>

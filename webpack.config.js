@@ -32,7 +32,7 @@ module.exports = {
                     'vue-style-loader',
                     'css-loader',
                     'sass-loader'
-              ],
+                ],
             },
             {
                 test: /\.vue$/,
@@ -100,7 +100,20 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, 'index.html'),
         }),
+        // new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+        //     analyzerMode: 'static',
+        //     // generateStatsFile: true, // [adam]: upload stats.json to Webpack Visualizer
+        //     // Wepback Visualizer (https://chrisbateman.github.io/webpack-visualizer/); tried plugin; didn't work
+        // }),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+        runtimeChunk: {
+            name: 'manifest', // separate so if it changes, our other files aren't affected
+        },
+    },
     devServer: {
         historyApiFallback: true,
         noInfo: true
