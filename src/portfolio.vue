@@ -16,16 +16,41 @@
             carousel? no timing
             images saved to media lib w/ cat: "Whatever" under parent "Portfolio"
             click big thumb to expand (dialog?)
-            /portfolio/:project/:thumb-n/
+            
+            <img
+                v-for="m in media"
+                :key="m.id"
+                :src="m.source_url"
+            >
         </section>
     </article>
 </template>
 
 <script>
+import PortfolioService from './services/Portfolio.js';
+
+const portfolio = new PortfolioService();
+
 export default {
+    name: 'Portfolio',
+
     data: () => ({
         foo: 'bar',
+        media: [],
     }),
+
+    created() {
+        this.getMedia();
+    },
+
+    methods: {
+        /**
+         * Fetches media post types from API & saves for later
+         */
+        getMedia() {
+            portfolio.getMedia().then(media => this.media = media);
+        },
+    },
 }
 </script>
 

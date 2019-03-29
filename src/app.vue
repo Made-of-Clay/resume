@@ -23,7 +23,7 @@
 
 <script>
 import fancyHeader from './fancy-header';
-import BlogService from './services/BlogService';
+import BlogService from './services/Blog';
 
 const months = [
     "January",
@@ -41,6 +41,8 @@ const months = [
 ];
 
 export default {
+    name: 'AdamLeis',
+
     filters: {
         postDate(dateTime) {
             const date = new Date(dateTime);
