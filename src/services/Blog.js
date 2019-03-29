@@ -1,12 +1,11 @@
-import BaseRequestService from './BaseRequestService';
+import BaseRequestService from './BaseRequest';
 
-const baseUrl = 'http://api.adamleis.com/wp-json/wp/v2';
 const logError = (msg, thrown) => console.error(msg, thrown);
 
 export default class BlogService extends BaseRequestService {
     constructor() {
         super();
-        this.postsUrl = `${baseUrl}/posts/`;
+        this.postsUrl = `${this.baseUrl}/posts/`;
     }
 
     getPosts() { // limits 10 most recent by default

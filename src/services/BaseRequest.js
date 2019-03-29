@@ -3,7 +3,7 @@
  */
 export default class BaseRequestService {
     constructor() {
-        this.baseUrl = 'http://api.adamleis.com/wp-json/wp/v2/';
+        this.baseUrl = 'http://api.adamleis.com/wp-json/wp/v2';
     }
 
     request(url) {
