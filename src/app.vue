@@ -1,132 +1,91 @@
 <template>
     <v-app>
-        <!-- <fancy-header id="site-header" class="main-header">
-            <nav>
-                <a
-                    v-for="section in sectionLinks"
-                    :href="`#${section}`"
-                    class="section-link"
-                    @click.prevent="scrollTo(section)"
-                    v-text="section"
-                ></a>
-            </nav>
-        </fancy-header> -->
-        <v-toolbar color="primary" dense>
-            <h1 class="title my-0">
-                Adam Leis
-            </h1>
-        </v-toolbar>
+        <!-- my red: #da1e33 -->
+        <!-- my gray: #626366 -->
+        <v-app-bar
+            color="#da1e33"
+            src="https://picsum.photos/1920/1080?random"
+            app dark
+            shrink-on-scroll
+            fade-img-on-scroll
+        >
+            <template v-slot:img="{ props }">
+                <v-img
+                    v-bind="props"
+                    gradient="to top right, rgba(218, 30, 51, .7), rgba(25,32,72,.7)"
+                />
+            </template>
 
-        <router-view />
+            <v-toolbar-title>
+                Adam Leis
+            </v-toolbar-title>
+
+            <v-spacer />
+
+            <v-btn icon>
+                <v-icon>mdi-facebook</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+                <v-icon>mdi-linkedin</v-icon>
+            </v-btn>
+        </v-app-bar>
+
+        <v-sheet class="overflow-y-auto">
+            <v-container style="margin-top:140px">
+                <ul>
+                    <li
+                        v-for="(section, i) in sections"
+                        :key="i"
+                        v-text="section"
+                    />
+                </ul>
+
+                <site-section
+                    v-for="(section, i) in sections"
+                    :key="i"
+                    v-text="section"
+                >
+                    <h1>{{section}}</h1>
+                    <lipsum single-paragraph />
+                </site-section>
+
+                <h5>Filler content</h5>
+                <lipsum />
+            </v-container>
+        </v-sheet>
     </v-app>
 </template>
 
 <script>
-import fancyHeader from './fancy-header';
-import BlogService from './services/Blog';
-
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
+import lipsum from './lipsum';
+import siteSection from './site-section';
 
 export default {
-    name: 'AdamLeis',
-
-    filters: {
-        postDate(dateTime) {
-            const date = new Date(dateTime);
-            return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-        },
-    },
-
     components: {
-        fancyHeader,
+        lipsum,
+        siteSection,
     },
 
-    data() {
-        return {
-            sectionLinks: [
-                'welcome',
-                'portfolio',
-                'blog',
-                'contact',
-            ],
-
-            recentPosts: [],
-        };
-    },
+    data: () => ({
+        sections: [
+            'contact form (sends to some AWS/Firebase lambda)',
+            'bio/about',
+            'relevant experience (w/ job context)',
+            'personal projects (description and git link?)',
+            'github site source link',
+            'education',
+            'social links',
+        ],
+    }),
 
     created() {
-        this.getPosts();
     },
 
     methods: {
-        scrollTo(section) {
-            // window scrollto logic
-        },
-
-        getPosts() {
-            const blog = new BlogService();
-            blog.getPosts().then(posts => {
-                // filter out "Welcome" post
-                this.recentPosts = posts.filter(post => post.id !== 7);
-            });
-        },
     },
-}
+};
 </script>
 
 <style lang="scss">
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-}
-
-h1, h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
-
-.section-link {
-    text-transform: capitalize;
-}
-
-.blog-posts {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.blog-post__date {
-    &::before {
-        content: 'Posted:';
-        display: inline-block;
-        margin-right: 0.5em;
-    }
-}
 </style>
