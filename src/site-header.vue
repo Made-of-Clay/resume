@@ -15,7 +15,7 @@
         </template>
 
         <v-app-bar-nav-icon @click="toggleNavDrawer" />
-        <v-toolbar-title>
+        <v-toolbar-title class="siteHeader__title" @click="$vuetify.goTo(0)">
             Adam Leis
         </v-toolbar-title>
 
@@ -43,5 +43,7 @@ export default {
 </script>
 
 <style>
-
+.siteHeader__title {
+    cursor: pointer;
+}
 </style>
