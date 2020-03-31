@@ -34,5 +34,14 @@ export default {
     &:first-child {
         margin-top: 0;
     }
+
+    > h1 { // TODO change heading font-family (maybe in app.vue) and add dashed underline
+        margin-bottom: 4px;
+    }
+}
+.multipleColumns {
+    @media (min-width: 960px) { // vuetify "medium" starts at 960
+        column-width: 28rem;
+    }
 }
 </style>
