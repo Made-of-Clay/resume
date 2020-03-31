@@ -4,7 +4,8 @@
             <v-icon v-text="section.icon" />
             {{section.heading}}
         </h1>
-        FORM - sends to cloud lambda to send the email
+        Schooling history (BFA and current Masters)
+        Talk about take-aways and good-sounding "moral of the story"
     </section>
 </template>
 
@@ -18,9 +19,9 @@ export default {
 
     data: () => ({
         section: {
-            heading: 'Contact',
-            icon: 'mdi-email',
-            id: 'contact',
+            heading: 'Education',
+            icon: 'mdi-school',
+            id: 'education',
         },
     }),
     computed: {

@@ -4,7 +4,7 @@
             <v-icon v-text="section.icon" />
             {{section.heading}}
         </h1>
-        FORM - sends to cloud lambda to send the email
+        list off things you want to learn more about and experiment with (and maybe why)
     </section>
 </template>
 
@@ -18,9 +18,9 @@ export default {
 
     data: () => ({
         section: {
-            heading: 'Contact',
-            icon: 'mdi-email',
-            id: 'contact',
+            heading: 'R & D',
+            icon: 'mdi-book-open-page-variant',
+            id: 'research-development',
         },
     }),
     computed: {

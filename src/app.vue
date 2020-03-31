@@ -25,5 +25,11 @@ export default {
         siteContent,
         siteNavDrawer,
     },
+
+    created() {
+        if (this.$vuetify.breakpoint.lgAndUp) {
+            this.$store.commit('openDrawer');
+        }
+    },
 };
 </script>

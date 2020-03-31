@@ -5,6 +5,7 @@
             {{section.heading}}
         </h1>
         about me blah blah blah - maybe a photo of the fam
+        include overview-esque information (?)
     </section>
 </template>
 

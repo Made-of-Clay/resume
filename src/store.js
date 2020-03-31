@@ -2,6 +2,14 @@ export default {
     state: {
         drawerOpen: false,
         sections: [], // [{ heading, icon, id }]
+        sectionOrder: [
+            'sectionAbout',
+            'sectionExperience',
+            'sectionSkills',
+            'sectionResearchDevelopment',
+            'sectionEducation',
+            'sectionContact',
+        ],
     },
 
     mutations: {

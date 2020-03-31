@@ -4,7 +4,8 @@
             <v-icon v-text="section.icon" />
             {{section.heading}}
         </h1>
-        FORM - sends to cloud lambda to send the email
+        work history, past jobs (title, context/work done)
+        maybe use timeline?
     </section>
 </template>
 
@@ -18,9 +19,9 @@ export default {
 
     data: () => ({
         section: {
-            heading: 'Contact',
-            icon: 'mdi-email',
-            id: 'contact',
+            heading: 'Experience',
+            icon: 'mdi-check-circle',
+            id: 'experience',
         },
     }),
     computed: {

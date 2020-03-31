@@ -1,5 +1,9 @@
 <template>
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer
+        ref="drawer"
+        v-model="drawer"
+        app clipped
+    >
         <v-subheader>Sections</v-subheader>
         <v-list dense>
             <v-list-item

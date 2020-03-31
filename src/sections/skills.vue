@@ -4,7 +4,7 @@
             <v-icon v-text="section.icon" />
             {{section.heading}}
         </h1>
-        FORM - sends to cloud lambda to send the email
+        fancy animated dots (make skill component that takes value, total & dances a little on hover)
     </section>
 </template>
 
@@ -18,9 +18,9 @@ export default {
 
     data: () => ({
         section: {
-            heading: 'Contact',
-            icon: 'mdi-email',
-            id: 'contact',
+            heading: 'Skills',
+            icon: 'mdi-toolbox',
+            id: 'skills',
         },
     }),
     computed: {
