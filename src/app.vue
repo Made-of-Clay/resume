@@ -33,3 +33,13 @@ export default {
     },
 };
 </script>
+
+<style>
+a[href] {
+    text-decoration: none;
+    transition: all 0.25s;
+}
+a:hover {
+    opacity: 0.65;
+}
+</style>

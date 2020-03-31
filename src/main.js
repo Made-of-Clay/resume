@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import storeObj from './store';
 
 import app from './app';
+import xLink from './x-link';
 
 Vue.use(Vuex);
 const store = new Vuex.Store(storeObj);
@@ -21,6 +22,8 @@ const vuetify = new Vuetify({
         },
     }
 });
+
+Vue.component('x-link', xLink);
 
 new Vue({
     el: '#app',
