@@ -18,7 +18,7 @@
                     </h2>
                     <p>
                         <span class="d-block">Minor in Astronomy</span>
-                        <b class="d-block secondary--text faded">
+                        <b class="d-block accent--text">
                             <span>May 2010</span>
                             <em>Cum Laude</em>
                         </b>
@@ -34,7 +34,7 @@
                         in
                         <b class="secondary--text">Christian Apologetics</b>
                     </h2>
-                    <p><b class="secondary--text faded">2019-present</b></p>
+                    <p><b class="accent--text">2019-present</b></p>
                     <p>This education experience has been new on a number of fronts for me. It is the first fully-online program I have been enrolled in during my higher education career. It is also very different from the kind of course work I had with BGSU in the Fine Arts program. The critical lessons of learning carry over though. Apologetics demands study in diverse fields like philosophy, science, history, and religions. It also focuses on critical thinking and analytical skills for interpretation and assessment of arguments. I have so far thoroughly enjoyed the range of topics the courses have covered and look forward to more.</p>
                     <p>I do not know how this education will be used in the future, but as for now, it has provided invaluable skills and insights that I share with my church community. It has also helped build my convidence in the various leadership roles I am in with the youth and college programs as well as my role as a church Elder.</p>
                 </v-col>
@@ -67,12 +67,6 @@ export default {
 .education {
     h2 {
         font-weight: normal;
-    }
-    .wholeWord {
-        white-space: nowrap;
-    }
-    .faded {
-        opacity: 0.5;
     }
 }
 </style>
