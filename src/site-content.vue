@@ -29,10 +29,12 @@ export default {
 
 <style lang="scss">
 .siteContent__section {
-    margin: 50vh 0;
+    margin: 50vh 0 50vh;
+    padding-top: 10vh;
 
     &:first-child {
         margin-top: 0;
+        padding-top: 0;
     }
 
     > h1 { // TODO change heading font-family (maybe in app.vue) and add dashed underline
