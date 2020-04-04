@@ -5,14 +5,6 @@
             {{section.heading}}
         </h1>
 
-        projects to highlight
-        ===
-        <highlight-kona />
-        Floorboard
-        Peeks (employee, part)
-        Marvel calculator
-        Wedding website
-
         <v-row class="highlights__gallery">
             <v-col cols="12" class="order-1">
                 <v-tabs v-model="current.group" class="mb-4">
@@ -24,10 +16,10 @@
                     KONA is the project I have been working on for the last 5 years. It is a web application used internally at Rosenboom for tracking jobs &amp; parts, activity on the shop floor, employee performance, etc.... My role is primarily front-end development, but frequently included back-end development, especially when updating apps from our jQuery/CodeIgniter setup to the newer Vue/Phalcon paradigm. We wrote the back-end as a REST API and digested it from the server.
                 </p>
                 <p v-else-if="highlighted.id === 'marvel'">
-                    Marvel is super fun - here is why
+                    One of my more dorky past times is playing roleplating games a la Dungeons &amp; Dragons. This particular web app is used in a Marvel roleplaying game where roll results are percentile (1-100) and success levels are compared against a chart. I found myself thinking a calculator would not only be more visually meaningful for me but would also be good practice for whatever technology I would be using at the time. The third version can be viewed <x-link href="http://marvel.adamleis.com" v-text="'here'" /> and its source is available on <x-link href="https://github.com/Made-of-Clay/marvel-calculator" v-text="'GitHub'" />. White results are failures, green to red indicate level of success where green is a moderate success and red is a critical success. (This is well-known among the users, so more information is not needed.)
                 </p>
                 <p v-else-if="highlighted.id === 'wedding'">
-                    I got married (a little while ago); here's some prove
+                    This little project has stood up decently to the test of time, as far as interactions go. <x-link href="http://adamandsarah.adamleis.com" v-text="'My wedding website'" /> was a fun little project done over 5 years ago. It houses one of my favorite projects: a CSS 3D interactive cube telling the story of my wife and me meeting and falling in love. It was a fun and informative project. While I'm not thrilled with reading back through how I wrote my code back then, who is? It also adds the handy feature of keeping track of how long we have been married, which was an accidental feature I noticed in the jQuery countdown plugin which is now counting up from the wedding date.
                 </p>
             </v-col>
             <v-col cols="12" md="6" class="order-1 order-md-2">
@@ -88,9 +80,14 @@
                 </div>
             </v-col>
             <v-col cols="12" md="6" class="order-1">
-                <figure class="highlights__imageWrapper">
+                <v-sheet
+                    tag="figure"
+                    elevation="1"
+                    color="accent"
+                    class="highlights__imageWrapper pa-2 d-flex align-center justify-center"
+                >
                     <img :src="highlightedImage.src" alt="" class="highlights__image">
-                </figure>
+                </v-sheet>
             </v-col>
         </v-row>
     </section>
@@ -111,6 +108,12 @@ import notification from '../assets/notification-panel-mobile.png';
 import partPeek from '../assets/part-peek-desktop.png';
 import partTree from '../assets/part-tree-mobile.png';
 import userPanel from '../assets/user-panel-mobile.png';
+// marvel images
+import marvelCalcRed from '../assets/marvel-calc-red.png';
+import marvelCalcYlw from '../assets/marvel-calc-yellow.png';
+import marvelCalcChart from '../assets/marvel-calc-chart.png';
+// wedding image
+import wedding from '../assets/wedding.png';
 
 export default {
     components: {
@@ -148,12 +151,16 @@ export default {
         }, {
             id: 'marvel',
             name: 'Marvel Calculator',
-            images: [''],
+            images: [
+                { src: marvelCalcYlw,   id: 'yellow' },
+                { src: marvelCalcRed,   id: 'red' },
+                { src: marvelCalcChart, id: 'chart' },
+            ],
             link: 'http://marvel.adamleis.com',
         }, {
             id: 'wedding',
             name: 'Wedding Website',
-            images: [''],
+            images: [{src: wedding, id: 'wedding'}],
             link: 'adamandsarah.adamleis.com',
         }],
     }),
