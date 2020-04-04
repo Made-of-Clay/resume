@@ -11,6 +11,7 @@ export default {
             'sectionEducation',
             'sectionContact',
         ],
+        masthead: { src:'', kudos: '', link: '' },
     },
 
     mutations: {
@@ -22,6 +23,9 @@ export default {
             if (!matches) {
                 state.sections.push(info);
             }
+        },
+        updateMasthead(state, data) {
+            state.masthead = data;
         },
     },
 

@@ -15,6 +15,13 @@
                 {{section.heading}}
             </v-list-item>
         </v-list>
+
+        <template v-slot:append>
+            <a :href="mastheadPhoto.link" class="text-no-wrap ml-2 siteNavDrawer__unsplashLink">
+                <svg xmlns="http://www.w3.org/2000/svg" style="height:6px;width:auto;position:relative;vertical-align:middle;fill:currentcolor" viewBox="0 0 32 32"><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z" /></svg>
+                <small>{{mastheadPhoto.kudos}}</small>
+            </a>
+        </template>
     </v-navigation-drawer>
 </template>
 
@@ -32,6 +39,7 @@ export default {
             },
         },
         sections: vm => vm.$store.state.sections,
+        mastheadPhoto: vm => vm.$store.state.masthead,
     },
 
     methods: {
@@ -42,6 +50,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.siteNavDrawer__unsplashLink {
+    border-bottom: none !important;
 
+    > small {
+        font-size: x-small;
+    }
+}
 </style>
