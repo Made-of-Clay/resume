@@ -5,6 +5,7 @@ export default {
         sectionOrder: [
             'sectionAbout',
             'sectionExperience',
+            'sectionHighlights',
             'sectionSkills',
             'sectionResearchDevelopment',
             'sectionEducation',
