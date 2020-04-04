@@ -3,17 +3,20 @@ error_reporting(-1);
 $cleanedPost = [];
 function failMessage($message) {
     header("HTTP/1.0 400 Bad Request");
-    die("ERROR: $message");
+    die(json_encode("ERROR: $message"));
 }
+
+$json = file_get_contents('php://input'); // Takes raw data from the request
+$data = json_decode($json); // Converts it into a PHP object
 
 try {
     foreach (['name','email','message'] as $v) {
-        if (!isset($_POST[$v])) {
+        if (!property_exists($data, $v)) {
             failMessage("$v was not passed");
         }
         $isEmail = $v == 'email';
         $filter = $isEmail ? FILTER_SANITIZE_EMAIL : FILTER_SANITIZE_STRING;
-        $value = filter_var($_POST[$v], $filter);
+        $value = filter_var($data->$v, $filter);
         if ($isEmail && filter_var($value, FILTER_VALIDATE_EMAIL) === false) {
             failMessage("Email ($value) was not valid");
         }
