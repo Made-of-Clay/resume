@@ -33,15 +33,15 @@
                             required
                             color="success"
                         />
-                        <vue-recaptcha
-                            ref="recaptcha"
-                            sitekey="6LeyM-YUAAAAAHOIz1GgVLNoJvK9r2D302ks3mZx"
-                            load-recaptcha-script
-                            type="checkbox"
-                            @verify="checkValidation"
-                            @expired="resetCaptcha"
-                        />
                     </v-form>
+                    <vue-recaptcha
+                        ref="recaptcha"
+                        sitekey="6LeyM-YUAAAAAHOIz1GgVLNoJvK9r2D302ks3mZx"
+                        load-recaptcha-script
+                        type="checkbox"
+                        @verify="checkValidation"
+                        @expired="resetCaptcha"
+                    />
                     <v-alert v-if="feedback" :type="this.emailResult.type" class="mt-4">
                         {{this.emailResult.feedback}}
                     </v-alert>
@@ -175,9 +175,10 @@ export default {
             };
             fetch('http://adamleis.com/emailer.php', opts)
                 .then(response => {
-                    this.feedback = response.json();
                     this.emailError = response.status >= 400;
+                    return response.json();
                 })
+                .then(feedback => this.feedback = feedback)
                 .catch(thrown => console.error(thrown))
                 .finally(() => this.emailing = false)
             ;
