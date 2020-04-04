@@ -38,7 +38,7 @@
                             sitekey="6LeyM-YUAAAAAHOIz1GgVLNoJvK9r2D302ks3mZx"
                             load-recaptcha-script
                             type="checkbox"
-                            @verify="send"
+                            @verify="checkValidation"
                             @expired="resetCaptcha"
                         />
                     </v-form>
@@ -57,7 +57,7 @@
                             text
                             color="success"
                             :loading="emailing"
-                            @click="checkValidation"
+                            @click="send"
                         >
                             Send
                         </v-btn>
@@ -84,17 +84,6 @@
 <script>
 import sectionMixin from './section.mixin.js';
 import vueRecaptcha from 'vue-recaptcha';
-
-function post(url, data) {
-    const opts = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    };
-    return fetch(url, opts).then(response => response.json());
-}
 
 export default {
     components: {
@@ -165,7 +154,8 @@ export default {
         validate() {
             this.$refs.form.validate();
         },
-        checkValidation() {
+        checkValidation(...args) {
+            console.log('checkValidation >> args', args);
             this.validate();
             if (this.validForm) {
                 this.$refs.recaptcha.execute();
@@ -176,9 +166,19 @@ export default {
             this.emailing = true;
             this.resetCaptcha();
             const data = Object.assign({ recaptchaToken }, this.formData);
-            post('http://adamleis.com/emailer.php', data)
-                .then(message => this.feedback = message)
-                .catch(thrown => console.error(thrown)) // TODO chekc this and extract helpful info for the user
+            const opts = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            };
+            fetch('http://adamleis.com/emailer.php', opts)
+                .then(response => {
+                    this.feedback = response.json();
+                    this.emailError = response.status >= 400;
+                })
+                .catch(thrown => console.error(thrown))
                 .finally(() => this.emailing = false)
             ;
         },
