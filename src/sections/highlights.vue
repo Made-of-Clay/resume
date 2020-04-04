@@ -59,10 +59,10 @@
                             Various "peek" components were created to display useful data at a glance. This peek is an employee peek. It would display the employee photo, name, and employee ID (for those who had access). Peeks show on hovering trigger text.
                         </p>
                         <p v-if="highlightedImage.id === 'fbContext'">
-                            Floorboard was my largest contribution besides the general UI of KONA. It displayed live data for the floor, specific workcenter locations, labor at each workcenter, and timeliness of each labor. Objects could be tagged as well for quick reference. Data was updated via websockets using <x-link href="https://socket.io/" v-text="'socket.io'" />.
+                            Floorboard was my largest contribution besides the general UI of KONA. It displayed live data for the floor, specific workcenter locations, labor at each workcenter, and timeliness of each labor. Objects could be tagged as well for quick reference. Data is updated via websockets using <x-link href="https://socket.io/" v-text="'socket.io'" />.
                         </p>
                         <p v-if="highlightedImage.id === 'fbLayers'">
-                            Floorboard also showed a number of other layers of data. Phones, terminals, printers, serial IP converters, etc... Each would display when one lost connection and for how long, as well as their IP addresses. Visibility and draggability could also be toggled for users with permission. Objects could be searched for and removed. All of Floorboard was interactive with pan/zoom features, thanks to <x-link href="https://d3js.org/" v-text="'d3'" /> &amp; SVGs.
+                            Floorboard also showed a number of other layers of data. Phones, terminals, printers, serial IP converters, etc... Each would display when one lost connection and for how long, as well as their IP addresses. Visibility and draggability could also be toggled for users with permission. Objects could be searched for and removed. All of Floorboard is interactive with pan/zoom features, thanks to <x-link href="https://d3js.org/" v-text="'d3'" /> &amp; SVGs.
                         </p>
                         <p v-if="highlightedImage.id === 'notification'">
                             Some apps would utilize a notification feature to send relevant users updates on tasks that required their attention. This also used websockets and behaved much like mobile device push notifications.
@@ -74,7 +74,7 @@
                             The Part application is very robust, offering many tabs of information. The BOM (Bill of Material) Tree tab displayed hierarchical information for a given part, relevant job data, quantities, etc.... More complex jobs had larger trees, so being able to see the relationships eased a conceptual burdon. (Note that this view is mobile landscape.)
                         </p>
                         <p v-if="highlightedImage.id === 'userPanel'">
-                            The user panel housed account-specific controls and navigation, as well as the ability to switch between plants. When one's plant was changed, all instances of KONA immediately updated via websocket events to prevent stale data and confusion. Logging out and locking one's screen also affected all user instances. Vuex was invaluable in keeping things up-to-date and simple to change across KONA.
+                            The user panel housed account-specific controls and navigation, as well as the ability to switch between plants. When one's plant is changed, all instances of KONA immediately updated via websocket events to prevent stale data and confusion. Logging out and locking one's screen also affected all user instances. Vuex was invaluable in keeping things up-to-date and simple to change across KONA.
                         </p>
                     </template>
                 </div>
