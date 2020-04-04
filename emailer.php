@@ -30,7 +30,11 @@ try {
         "From: {$cleanedPost['email']}",
         "Reply-To: {$cleanedPost['email']}"
     ]);
-    mail($to, $subject, $message, $headers);
+    if (mail($to, $subject, $message, $headers)) {
+        echo json_encode('Message sent');
+    } else {
+        throw new \Exception('Message not sent; mail failed');
+    }
 } catch (\Exception $thrown) {
     failMessage($thrown->getMessage());
 }
