@@ -33,6 +33,14 @@
                             required
                             color="success"
                         />
+                        <vue-recaptcha
+                            ref="recaptcha"
+                            sitekey="6LeyM-YUAAAAAHOIz1GgVLNoJvK9r2D302ks3mZx"
+                            load-recaptcha-script
+                            type="checkbox"
+                            @verify="send"
+                            @expired="resetCaptcha"
+                        />
                     </v-form>
                     <v-alert v-if="feedback" :type="this.emailResult.type" class="mt-4">
                         {{this.emailResult.feedback}}
@@ -49,7 +57,7 @@
                             text
                             color="success"
                             :loading="emailing"
-                            @click="send"
+                            @click="checkValidation"
                         >
                             Send
                         </v-btn>
@@ -75,8 +83,24 @@
 
 <script>
 import sectionMixin from './section.mixin.js';
+import vueRecaptcha from 'vue-recaptcha';
+
+function post(url, data) {
+    const opts = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    };
+    return fetch(url, opts).then(response => response.json());
+}
 
 export default {
+    components: {
+        vueRecaptcha,
+    },
+
     mixins: [
         sectionMixin,
     ],
@@ -141,30 +165,25 @@ export default {
         validate() {
             this.$refs.form.validate();
         },
-        send() {
+        checkValidation() {
             this.validate();
-            this.$nextTick(() => { // validate isn't right value yet; essentially async, I guess
-                if (this.validForm) {
-                    const data = this.formData;
-                    const postOpts = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data)
-                    };
-                    console.log('postOpts', postOpts);
-                    this.emailing = true;
-                    setTimeout(() => {
-                        this.emailing = false;
-                    }, 500);
-                    // fetch('/emailer.php', postOpts)
-                    //     .then(response => response.json())
-                    //     .then(message => this.feedback = message)
-                    //     .catch(thrown => console.error(thrown)) // TODO chekc this and extract helpful info for the user
-                    // ;
-                }
-            });
+            if (this.validForm) {
+                this.$refs.recaptcha.execute();
+            }
+            // this.$nextTick(() => this.send());
+        },
+        send(recaptchaToken) {
+            this.emailing = true;
+            this.resetCaptcha();
+            const data = Object.assign({ recaptchaToken }, this.formData);
+            post('http://adamleis.com/emailer.php', data)
+                .then(message => this.feedback = message)
+                .catch(thrown => console.error(thrown)) // TODO chekc this and extract helpful info for the user
+                .finally(() => this.emailing = false)
+            ;
+        },
+        resetCaptcha() {
+            this.$refs.recaptcha.reset();
         },
     },
 };
