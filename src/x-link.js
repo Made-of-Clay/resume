@@ -18,6 +18,7 @@ export default {
         ];
         return h('a', {
             domProps: context.props,
+            class: context.data && context.data.staticClass ? context.data.staticClass : '',
         }, children);
     },
 };
