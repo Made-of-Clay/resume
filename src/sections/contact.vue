@@ -56,6 +56,7 @@
                         <v-btn
                             text
                             color="success"
+                            :disabled="submitDisabled"
                             :loading="emailing"
                             @click="checkValidation"
                         >
@@ -84,8 +85,6 @@
 <script>
 import sectionMixin from './section.mixin.js';
 import vueRecaptcha from 'vue-recaptcha';
-
-let recaptchaToken = '';
 
 export default {
     components: {
@@ -116,6 +115,7 @@ export default {
         feedback: '',
         emailError: false,
         emailing: false,
+        recaptchaToken: '',
     }),
     computed: {
         nameRules: vm => ['required', 'nameLength'].map(rule => vm.rules[rule]),
@@ -124,6 +124,7 @@ export default {
             feedback: vm.feedback,
             type: vm.emailError ? 'error' : 'success',
         }),
+        submitDisabled: vm => !vm.validForm || !vm.recaptchaToken,
     },
 
     watch: {
@@ -162,12 +163,13 @@ export default {
         },
         verify(token) {
             this.validate();
-            recaptchaToken = token;
+            this.recaptchaToken = token;
         },
         send() {
-            if (!this.validForm) return;
+            if (!this.validForm && this.recaptchaToken) return;
             this.emailing = true;
             this.resetCaptcha();
+            const {recaptchaToken} = this.$data;
             const data = Object.assign({ recaptchaToken }, this.formData);
             const opts = {
                 method: 'POST',
@@ -187,7 +189,7 @@ export default {
             ;
         },
         resetCaptcha() {
-            recaptchaToken = '';
+            this.recaptchaToken = '';
             this.$refs.recaptcha.reset();
         },
     },
