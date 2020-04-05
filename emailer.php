@@ -10,7 +10,10 @@ $json = file_get_contents('php://input'); // Takes raw data from the request
 $data = json_decode($json); // Converts it into a PHP object
 
 try {
-    foreach (['name','email','message'] as $v) {
+    /*
+    must process recaptchaToken from POST JSON (i.e. $data->recaptchaToken)
+    */
+    foreach (['name','email','message','recaptchaToken'] as $v) {
         if (!property_exists($data, $v)) {
             failMessage("$v was not passed");
         }
@@ -23,6 +26,10 @@ try {
         $cleanedPost[$v] = $value;
     }
     $secrets = json_decode(file_get_contents(realpath(__DIR__ . '/../../adamleis/secrets.json')));
+    $captchaResults = postCaptcha($data->recaptchaToken, $secrets->privateKey);
+    if (!$captchaResults['success']) {
+        failMessage('CAPTCHA failed');
+    }
     $to      = $secrets->myEmail;
     $subject = "'{$cleanedPost['name']}' sent a message from AdamLeis.com";
     $message = $cleanedPost['message'];
@@ -37,4 +44,15 @@ try {
     }
 } catch (\Exception $thrown) {
     failMessage($thrown->getMessage());
+}
+
+function postCaptcha($clientToken, $secret) {
+    $fieldStr = "secret=$secret&response=$clientToken";
+    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fieldStr);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return json_encode($result);
 }

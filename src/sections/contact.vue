@@ -39,7 +39,7 @@
                         sitekey="6LeyM-YUAAAAAHOIz1GgVLNoJvK9r2D302ks3mZx"
                         load-recaptcha-script
                         type="checkbox"
-                        @verify="checkValidation"
+                        @verify="verify"
                         @expired="resetCaptcha"
                     />
                     <v-alert v-if="feedback" :type="this.emailResult.type" class="mt-4">
@@ -57,7 +57,7 @@
                             text
                             color="success"
                             :loading="emailing"
-                            @click="send"
+                            @click="checkValidation"
                         >
                             Send
                         </v-btn>
@@ -156,13 +156,13 @@ export default {
         validate() {
             this.$refs.form.validate();
         },
-        checkValidation(token) {
+        checkValidation() {
+            this.validate();
+            this.$nextTick(() => this.send());
+        },
+        verify(token) {
             this.validate();
             recaptchaToken = token;
-            // if (this.validForm) {
-            //     this.$refs.recaptcha.execute();
-            // }
-            // this.$nextTick(() => this.send());
         },
         send() {
             if (!this.validForm) return;
@@ -187,6 +187,7 @@ export default {
             ;
         },
         resetCaptcha() {
+            recaptchaToken = '';
             this.$refs.recaptcha.reset();
         },
     },
