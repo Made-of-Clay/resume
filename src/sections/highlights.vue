@@ -13,10 +13,10 @@
                     </v-tab>
                 </v-tabs>
                 <p v-if="highlighted.id === 'kona'">
-                    KONA is the project I have been working on for the last 5 years. It is a web application used internally at Rosenboom for tracking jobs &amp; parts, activity on the shop floor, employee performance, etc.... My role is primarily front-end development, but frequently included back-end development, especially when updating apps from our jQuery/CodeIgniter setup to the newer Vue/Phalcon paradigm. We wrote the back-end as a REST API and digested it from the server.
+                    KONA is the project I have been working on for the last 5 years. It is a web application used internally at Rosenboom for tracking jobs &amp; parts, activity on the shop floor, employee performance, etc.... My role is primarily front-end development but frequently included back-end development, especially when updating apps from our jQuery/CodeIgniter setup to the newer Vue/Phalcon paradigm. We wrote the back-end as a REST API and digested it from the server.
                 </p>
                 <p v-else-if="highlighted.id === 'marvel'">
-                    One of my more dorky past times is playing roleplating games a la Dungeons &amp; Dragons. This particular web app is used in a Marvel roleplaying game where roll results are percentile (1-100) and success levels are compared against a chart. I found myself thinking a calculator would not only be more visually meaningful for me but would also be good practice for whatever technology I would be using at the time. The third version can be viewed <x-link href="http://marvel.adamleis.com" v-text="'here'" /> and its source is available on <x-link href="https://github.com/Made-of-Clay/marvel-calculator" v-text="'GitHub'" />. White results are failures, green to red indicate level of success where green is a moderate success and red is a critical success. (This is well-known among the users, so more information is not needed.)
+                    One of my more dorky past times is playing roleplaying games à la Dungeons &amp; Dragons. This particular web app is used in a Marvel roleplaying game where roll results are percentile (1-100) and success levels are compared against a chart. I found myself thinking a calculator would not only be more visually meaningful for me but would also be good practice for whatever technology I would be using at the time. The third version can be viewed <x-link href="http://marvel.adamleis.com" v-text="'here'" /> and its source is available on <x-link href="https://github.com/Made-of-Clay/marvel-calculator" v-text="'GitHub'" />. White results are failures, green to red indicate level of success where green is a moderate success and red is a critical success. (This is well-known among the users, so more information is not needed.)
                 </p>
                 <p v-else-if="highlighted.id === 'wedding'">
                     This little project has stood up decently to the test of time, as far as interactions go. <x-link href="http://adamandsarah.adamleis.com" v-text="'My wedding website'" /> was a fun little project done over 5 years ago. It houses one of my favorite projects: a CSS 3D interactive cube telling the story of my wife and me meeting and falling in love. It was a fun and informative project. While I'm not thrilled with reading back through how I wrote my code back then, who is? It also adds the handy feature of keeping track of how long we have been married, which was an accidental feature I noticed in the jQuery countdown plugin which is now counting up from the wedding date.
@@ -44,13 +44,13 @@
                     </div>
                     <template v-if="highlighted.id === 'kona'">
                         <p v-if="highlightedImage.id === 'applistDesktop'">
-                            The applist showed all of the apps that a user had access to. The apps were grouped alphabetically and a filter is available for quickly finding apps. Apps could be saved by a given user into groups as a sibling tab of the applist.
+                            The app list showed all of the apps that a user had access to. The apps were grouped alphabetically and a filter is available for quickly finding apps. Apps could be saved by a given user into groups as a sibling tab of the app list.
                         </p>
                         <p v-if="highlightedImage.id === 'applistMobile'">
                             Responsive design is important in KONA. People used it on phones, tablets, terminals, and office computers. Most apps were fully usable no matter the device with only a few exceptions.
                         </p>
                         <p v-if="highlightedImage.id === 'blueprints'">
-                            Blueprints were available through KONA as well for engineer and shop worker alike. Existing as PDFs, they were opened in iframes. Preview thumbnails were available and would process the PDF into an image on the fly.
+                            Blueprints were available for engineers and shop workers through KONA as well. Existing as PDFs, they were opened in iframes. Preview thumbnails were available and would process the PDF into an image on the fly.
                         </p>
                         <p v-if="highlightedImage.id === 'calendarPanel'">
                             A calendar component was developed for some who needed to know ordinal dates throughout the year. This eventually served as a perfect place to include company holidays.
@@ -59,13 +59,13 @@
                             Various "peek" components were created to display useful data at a glance. This peek is an employee peek. It would display the employee photo, name, and employee ID (for those who had access). Peeks show on hovering trigger text.
                         </p>
                         <p v-if="highlightedImage.id === 'fbContext'">
-                            Floorboard was my largest contribution besides the general UI of KONA. It displayed live data for the floor, specific workcenter locations, labor at each workcenter, and timeliness of each labor. Objects could be tagged as well for quick reference. Data is updated via websockets using <x-link href="https://socket.io/" v-text="'socket.io'" />.
+                            "Floorboard" was my largest contribution besides the general UI of KONA. It displayed live data for the floor, specific work center locations, labor at each work center, and timeliness of each labor. Objects could be tagged as well for quick reference. Data is updated via WebSockets using <x-link href="https://socket.io/" v-text="'socket.io'" />.
                         </p>
                         <p v-if="highlightedImage.id === 'fbLayers'">
-                            Floorboard also showed a number of other layers of data. Phones, terminals, printers, serial IP converters, etc... Each would display when one lost connection and for how long, as well as their IP addresses. Visibility and draggability could also be toggled for users with permission. Objects could be searched for and removed. All of Floorboard is interactive with pan/zoom features, thanks to <x-link href="https://d3js.org/" v-text="'d3'" /> &amp; SVGs.
+                            "Floorboard" also showed a number of other layers of data. Phones, terminals, printers, serial IP converters, etc... Each would display when one lost connection and for how long, as well as their IP addresses. Visibility and draggability could also be toggled for users with permission. Objects could be searched for and removed. All of "Floorboard" is interactive with pan/zoom features, thanks to <x-link href="https://d3js.org/" v-text="'d3'" /> &amp; SVGs.
                         </p>
                         <p v-if="highlightedImage.id === 'notification'">
-                            Some apps would utilize a notification feature to send relevant users updates on tasks that required their attention. This also used websockets and behaved much like mobile device push notifications.
+                            Some apps would utilize a notification feature to send relevant users updates on tasks that required their attention. This also used WebSockets and behaved much like mobile device push notifications.
                         </p>
                         <p v-if="highlightedImage.id === 'partPeek'">
                             Another example of a frequently-used peek, the part peek would be available wherever part numbers were displayed and offered brief information on the part as well as quick "open with" links to other apps. Blueprints were also checked and displayed availability for a given part.

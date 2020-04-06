@@ -35,13 +35,13 @@
                     />
                     <v-card-text>
                         <p v-if="item.id === 'rsbm'">
-                            Position began as the front-end developer advancing technology and unifying the many (about 15) application UIs. Eventually became full stack developer building DevOps (Webpack), adding unit testing, and converting jQuery-based apps to use Vue.js and Vuex. Worked with Node.js & websockets for real-time updates. Also worked on converting CodeIgniter apps to use Phalcon in PHP; MySQL and SQL Server databases.
+                            This position began as the front-end developer advancing technology and unifying the many (about 15) application UIs. Eventually became full stack developer building DevOps (Webpack), adding unit testing, and converting jQuery-based apps to use Vue.js and Vuex. Worked with Node.js & WebSockets for real-time updates. I also worked on converting CodeIgniter apps to use Phalcon in PHP; MySQL and SQL Server databases.
                         </p>
                         <p v-else-if="item.id === 'arm'">
                             Director of Web Development included managing client &amp; in-house website content, design, development, third-party and hosting. Worked with designers for client sites &amp; implemented designs in WordPress websites. Implemented SEO strategies for clients. Managed projects and worked with clients to determine website needs as well as communicating needs to relevant parties at Anderson Robertson Marketing.
                         </p>
                         <p v-else-if="item.id === 'lfn'">
-                            Worked as front-end developer with a back-end developer and designer to quickly generate single-page sites giving our lawyer clients increased web presence and search engine visibility. Also worked to upkeep country-wide legal directories for specific practices (e.g. DUI, Bankrupty, ...). Eventually became full stack developer and assumed responsibilities of back-end developer as well. Frequently interacted with clients to work on content and design of their web pages.
+                            Worked as the front-end developer with a back-end developer and designer to quickly generate single-page sites giving our lawyer clients increased web presence and search engine visibility. Also worked to upkeep country-wide legal directories for specific practices (e.g. DUI, Bankruptcy, ...). Eventually became a full stack developer and assumed responsibilities of back-end developer as well. Frequently interacted with clients to work on the content and design of their web pages.
                         </p>
                         <p v-else-if="item.id === 'ssi'">
                             Lead web developer, occasionally over-seeing others, in a small company providing web services for local businesses and community organizations.

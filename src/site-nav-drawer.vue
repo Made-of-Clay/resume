@@ -45,6 +45,9 @@ export default {
     methods: {
         goToSection(id) {
             this.$vuetify.goTo(`#${id}`);
+            if (this.$vuetify.breakpoint.mdAndDown) {
+                this.$store.commit('openDrawer', false);
+            }
         },
     },
 };

@@ -77,6 +77,7 @@
                         <x-link href="https://www.linkedin.com/in/adam-leis-75018b23/" v-text="'LinkedIn'" />
                     </v-list-item>
                 </v-list>
+                <p>References are available upon request.</p>
             </v-col>
         </v-row>
     </section>
