@@ -168,6 +168,12 @@ export default {
         highlighted: vm => vm.highlights[vm.current.group],
         highlightedImage: vm => vm.highlighted.images[vm.current.image],
     },
+
+    watch: {
+        'current.group'() {
+            this.current.image = 0;
+        },
+    },
 };
 </script>
 
