@@ -109,9 +109,9 @@ import partPeek from '../assets/part-peek-desktop.png';
 import partTree from '../assets/part-tree-mobile.png';
 import userPanel from '../assets/user-panel-mobile.png';
 // marvel images
-import marvelCalcRed from '../assets/marvel-calc-red.png';
-import marvelCalcYlw from '../assets/marvel-calc-yellow.png';
-import marvelCalcChart from '../assets/marvel-calc-chart.png';
+import marvelCalcRed from '../assets/mvl-calc-red.png';
+import marvelCalcYlw from '../assets/mvl-calc-yellow.png';
+import marvelCalcChart from '../assets/mvl-calc-chart.png';
 // wedding image
 import wedding from '../assets/wedding.png';
 
