@@ -1,10 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const webpack = require('webpack');
 
 const distPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
+
+const sassLoaderConf = {
+    loader: 'sass-loader',
+    options: {
+        // Prefer `dart-sass`
+        implementation: require('sass'),
+    },
+};
 
 ////////////////////////////////////////////
 // look into extracting css to built file
@@ -20,21 +29,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader'
-                ],
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ],
-            },
-            {
                 test: /\.vue$/,
                 include: srcPath,
                 loader: 'vue-loader',
@@ -43,7 +37,7 @@ module.exports = {
                         scss: [
                             'vue-style-loader',
                             'css-loader',
-                            'sass-loader'
+                            sassLoaderConf,
                         ],
                     }
                     // other vue-loader options go here
@@ -70,8 +64,23 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ],
+            },
+            {
+                test: /\.s[ca]ss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    sassLoaderConf,
+                ],
+            },
             // {
-            //     test: /\.[s]?css$/,
+            //     test: /\.[sc|sa|c]ss$/,
             //     include: srcPath,
             //     use: [
             //         'vue-style-loader',
@@ -96,15 +105,16 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new VuetifyLoaderPlugin(),
         new HtmlWebpackPlugin({ // updates index.phtml w/ hashed files
             filename: 'index.html',
             template: path.resolve(__dirname, 'index.html'),
         }),
-        // new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
-        //     analyzerMode: 'static',
-        //     // generateStatsFile: true, // [adam]: upload stats.json to Webpack Visualizer
-        //     // Wepback Visualizer (https://chrisbateman.github.io/webpack-visualizer/); tried plugin; didn't work
-        // }),
+        new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+            analyzerMode: 'static',
+            // generateStatsFile: true, // [adam]: upload stats.json to Webpack Visualizer
+            // Wepback Visualizer (https://chrisbateman.github.io/webpack-visualizer/); tried plugin; didn't work
+        }),
     ],
     optimization: {
         splitChunks: {
@@ -113,6 +123,7 @@ module.exports = {
         runtimeChunk: {
             name: 'manifest', // separate so if it changes, our other files aren't affected
         },
+        namedChunks: true,
     },
     devServer: {
         historyApiFallback: true,

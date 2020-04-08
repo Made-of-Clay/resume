@@ -97,23 +97,23 @@
 import sectionMixin from './section.mixin.js';
 // import highlightKona from './highlight-kona';
 // kona images
-import applistDesktop from '../assets/applist-desktop.png';
-import applistMobile from '../assets/applist-mobile.png';
-import blueprints from '../assets/blueprints-desktop.png';
-import calendarPanel from '../assets/calendar-panel-desktop.png';
-import empPeek from '../assets/emp-peek-mobile.png';
-import fbContext from '../assets/floorboard-desktop-contextmenu.png';
-import fbLayers from '../assets/floorboard-desktop-layers.png';
-import notification from '../assets/notification-panel-mobile.png';
-import partPeek from '../assets/part-peek-desktop.png';
-import partTree from '../assets/part-tree-mobile.png';
-import userPanel from '../assets/user-panel-mobile.png';
+import applistDesktop from '../assets/applist-desktop.jpg';
+import applistMobile from '../assets/applist-mobile.jpg';
+import blueprints from '../assets/blueprints-desktop.jpg';
+import calendarPanel from '../assets/calendar-panel-desktop.jpg';
+import empPeek from '../assets/emp-peek-mobile.jpg';
+import fbContext from '../assets/floorboard-desktop-contextmenu.jpg';
+import fbLayers from '../assets/floorboard-desktop-layers.jpg';
+import notification from '../assets/notification-panel-mobile.jpg';
+import partPeek from '../assets/part-peek-desktop.jpg';
+import partTree from '../assets/part-tree-mobile.jpg';
+import userPanel from '../assets/user-panel-mobile.jpg';
 // marvel images
-import marvelCalcRed from '../assets/mvl-calc-red.png';
-import marvelCalcYlw from '../assets/mvl-calc-yellow.png';
-import marvelCalcChart from '../assets/mvl-calc-chart.png';
+import marvelCalcRed from '../assets/mvl-calc-red.jpg';
+import marvelCalcYlw from '../assets/mvl-calc-yellow.jpg';
+import marvelCalcChart from '../assets/mvl-calc-chart.jpg';
 // wedding image
-import wedding from '../assets/wedding.png';
+import wedding from '../assets/wedding.jpg';
 
 export default {
     components: {
