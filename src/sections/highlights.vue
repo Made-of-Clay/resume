@@ -21,6 +21,9 @@
                 <p v-else-if="highlighted.id === 'wedding'">
                     This little project has stood up decently to the test of time, as far as interactions go. <x-link href="http://adamandsarah.adamleis.com" v-text="'My wedding website'" /> was a fun little project done over 5 years ago. It houses one of my favorite projects: a CSS 3D interactive cube telling the story of my wife and me meeting and falling in love. It was a fun and informative project. While I'm not thrilled with reading back through how I wrote my code back then, who is? It also adds the handy feature of keeping track of how long we have been married, which was an accidental feature I noticed in the jQuery countdown plugin which is now counting up from the wedding date.
                 </p>
+                <p v-else-if="highlighted.id === 'victorious'">
+                    My <x-link href="http://victorious.adamleis.com" v-text="'Victorious!'" /> victory tracker app tracks the game wins of my small game group. This project showcases some skills learned while working on KONA. I would often create interfaces to display collected data. Vue was used as the framework and Vuetify for the UI components. Apexcharts is used for the pie chart and more charts are planned for future implementation. Google Firebase is used for storing the data and managing user authentication/authorization, which was helpful in learning some cloud service skills.
+                </p>
             </v-col>
             <v-col cols="12" md="6" class="order-1 order-md-2">
                 <div class="highlights__interface">
@@ -77,6 +80,17 @@
                             The user panel housed account-specific controls and navigation, as well as the ability to switch between plants. When one's plant is changed, all instances of KONA immediately updated via websocket events to prevent stale data and confusion. Logging out and locking one's screen also affected all user instances. Vuex was invaluable in keeping things up-to-date and simple to change across KONA.
                         </p>
                     </template>
+                    <template v-if="highlighted.id === 'victorious'">
+                        <p v-if="highlightedImage.id === 'vicHistory'">
+                            The History timeline allows for filtering and sorting victories. As the data grows, it may be necessary to include pagination to the controls, but for now, this is sufficient (i.e. there's always more to do and this is sufficient to get the project live).
+                        </p>
+                        <p v-if="highlightedImage.id === 'vicPlayer'">
+                            Players' stats are displayed for quick, at-a-glance references.
+                        </p>
+                        <p v-if="highlightedImage.id === 'vicTotal'">
+                            Apexcharts powers the Victory Totals graphs. More graphs and charts are planned for the future.
+                        </p>
+                    </template>
                 </div>
             </v-col>
             <v-col cols="12" md="6" class="order-1">
@@ -95,6 +109,7 @@
 
 <script>
 import sectionMixin from './section.mixin.js';
+// TODO do this image referencing better - this is not sustainable/scalable - consider CDN or other
 // import highlightKona from './highlight-kona';
 // kona images
 import applistDesktop from '../assets/applist-desktop.jpg';
@@ -114,6 +129,10 @@ import marvelCalcYlw from '../assets/mvl-calc-yellow.jpg';
 import marvelCalcChart from '../assets/mvl-calc-chart.jpg';
 // wedding image
 import wedding from '../assets/wedding.jpg';
+// victorious images
+import vicHistory from '../assets/victorious-mobile-history.jpg';
+import vicPlayer from '../assets/victorious-mobile-player.jpg';
+import vicTotal from '../assets/victorious-mobile-total.jpg';
 
 export default {
     components: {
@@ -162,6 +181,15 @@ export default {
             name: 'Wedding Website',
             images: [{src: wedding, id: 'wedding'}],
             link: 'adamandsarah.adamleis.com',
+        }, {
+            id: 'victorious',
+            name: 'Victorious!',
+            images: [
+                { src: vicHistory, id: 'vicHistory' },
+                { src: vicPlayer,  id: 'vicPlayer' },
+                { src: vicTotal,   id: 'vicTotal' },
+            ],
+            link: 'http://victorious.adamleis.com',
         }],
     }),
     computed: {
