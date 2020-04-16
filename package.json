@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode=development --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --mode=production --hide-modules"
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack --progress --mode=production --hide-modules"
   },
   "dependencies": {
     "vue": "^2.6.8",

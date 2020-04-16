@@ -5,6 +5,7 @@
                 v-for="section in sectionOrder"
                 :key="`component-${section}`"
                 :is="section"
+                :id="section.substr(7)"
                 class="siteContent__section"
             />
         </v-container>
@@ -29,7 +30,7 @@ export default {
 
 <style lang="scss">
 .siteContent__section {
-    margin: 50vh 0 50vh;
+    margin: 55vh 0 50vh;
     padding-top: 10vh;
 
     &:first-child {

@@ -24,7 +24,8 @@ module.exports = {
     output: {
         path: distPath,
         // publicPath: distPath,
-        filename: 'build.js'
+        chunkFilename: '[name].js?[chunkhash]',
+        filename: 'build.js?[chunkhash]',
     },
     module: {
         rules: [
@@ -110,11 +111,11 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, 'index.html'),
         }),
-        new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+        /* new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
             analyzerMode: 'static',
             // generateStatsFile: true, // [adam]: upload stats.json to Webpack Visualizer
             // Wepback Visualizer (https://chrisbateman.github.io/webpack-visualizer/); tried plugin; didn't work
-        }),
+        }), */
     ],
     optimization: {
         splitChunks: {
