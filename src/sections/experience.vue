@@ -94,10 +94,23 @@ const timeComponent = {
         end: stringDefault,
         total: stringDefault,
     },
-    template: `
-    <div>
-        <span class="text-no-wrap">{{start}}</span> - <span class="text-no-wrap">{{end}}</span>: <span class="text-no-wrap">{{total}}</span>
-    </div>`,
+    // template: `
+    // <div>
+    //     <span class="text-no-wrap">{{start}}</span> - <span class="text-no-wrap">{{end}}</span>: <span class="text-no-wrap">{{total}}</span>
+    // </div>`,
+    render(h) {
+        const span = text => h('span', {
+            class: 'text-no-wrap',
+            domProps: {
+                innerText: text,
+            },
+        });
+        return h('div', [
+            span(`${this.start} -`),
+            span(`${this.end}: `),
+            span(this.total),
+        ]);
+    },
 };
 
 export default {
