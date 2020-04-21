@@ -169,7 +169,6 @@ export default {
         send() {
             if (!this.validForm && this.recaptchaToken) return;
             this.emailing = true;
-            this.resetCaptcha();
             const {recaptchaToken} = this.$data;
             const data = Object.assign({ recaptchaToken }, this.formData);
             const opts = {
@@ -184,7 +183,14 @@ export default {
                     this.emailError = response.status >= 400;
                     return response.json();
                 })
-                .then(feedback => this.feedback = feedback)
+                .then(feedback => {
+                    this.feedback = feedback;
+                    if (!this.emailError) {
+                        this.resetCaptcha();
+                        this.clear();
+                        this.resetValidation();
+                    }
+                })
                 .catch(thrown => console.error(thrown))
                 .finally(() => this.emailing = false)
             ;
