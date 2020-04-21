@@ -22,30 +22,18 @@
 
         <v-spacer />
 
-        <v-tooltip bottom>
+        <v-tooltip v-for="link in links" :key="`${link.icon}`" bottom>
             <template v-slot:activator="{on}">
                 <v-btn
                     icon
-                    @click="navigate('https://www.facebook.com/people/Adam-Leis/20927251')"
+                    @click="navigate(link.href)"
                     v-on="on"
                 >
-                    <v-icon>mdi-facebook</v-icon>
+                    <github-icon v-if="link.icon === 'github'" />
+                    <v-icon v-else v-text="link.icon" />
                 </v-btn>
             </template>
-            <span>Go to Adam's Facebook</span>
-        </v-tooltip>
-
-        <v-tooltip bottom>
-            <template v-slot:activator="{on}">
-                <v-btn
-                    icon
-                    @click="navigate('https://www.linkedin.com/in/adam-leis-75018b23/')"
-                    v-on="on"
-                >
-                    <v-icon>mdi-linkedin</v-icon>
-                </v-btn>
-            </template>
-            <span>Go to Adam's LinkedIn</span>
+            <span>{{link.text}}</span>
         </v-tooltip>
     </v-app-bar>
 </template>
@@ -56,8 +44,13 @@ import masthead2 from './assets/masthead2.jpg';
 import masthead3 from './assets/masthead3.jpg';
 import masthead4 from './assets/masthead4.jpg';
 import masthead5 from './assets/masthead5.jpg';
+import githubIcon from './icon-github';
 
 export default {
+    components: {
+        githubIcon,
+    },
+
     data: () => ({
         photos: [
             { src: masthead1, kudos: 'Masthead Photo by Henry Be on Unsplash', link: 'https://unsplash.com/@henry_be?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge' },
@@ -65,6 +58,21 @@ export default {
             { src: masthead3, kudos: 'Masthead Photo by 🇸🇮 Janko Ferlič on Unsplash', link: 'https://unsplash.com/@itfeelslikefilm?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge' },
             { src: masthead4, kudos: 'Masthead Photo by Aaron Burden on Unsplash', link: 'https://unsplash.com/@aaronburden?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge' },
             { src: masthead5, kudos: 'Masthead Photo by Pono Lopez on Unsplash', link: 'https://unsplash.com/@ponolopez?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge' },
+        ],
+        links: [
+            {
+                icon: 'mdi-facebook',
+                text: `Go to Adam's Facebook`,
+                href: 'https://www.facebook.com/people/Adam-Leis/20927251'
+            }, {
+                icon: 'github',
+                text: 'Go to GitHub source for adamleis.com',
+                href: 'https://github.com/Made-of-Clay/adamleis'
+            }, {
+                icon: 'mdi-linkedin',
+                text: `Go to Adam's LinkedIn`,
+                href: 'https://www.linkedin.com/in/adam-leis-75018b23/'
+            },
         ],
     }),
     computed: {

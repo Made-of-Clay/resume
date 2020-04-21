@@ -42,9 +42,11 @@
                         @verify="verify"
                         @expired="resetCaptcha"
                     />
-                    <v-alert v-if="feedback" :type="this.emailResult.type" class="mt-4">
-                        {{this.emailResult.feedback}}
-                    </v-alert>
+                    <v-fade-transition>
+                        <v-alert v-if="feedback" :type="this.emailResult.type" class="mt-4">
+                            {{this.emailResult.feedback}}
+                        </v-alert>
+                    </v-fade-transition>
                     <v-card-actions>
                         <v-spacer />
                         <v-btn text @click="resetValidation">
@@ -68,13 +70,15 @@
             <v-col cols="12" sm="6">
                 <p>You can also reach out to me through social media:</p>
                 <v-list>
-                    <v-list-item>
-                        <v-icon color="primary" class="mr-2" v-text="'mdi-facebook'" />
-                        <x-link href="https://www.facebook.com/people/Adam-Leis/20927251" v-text="'Facebook'" />
-                    </v-list-item>
-                    <v-list-item>
-                        <v-icon color="primary" class="mr-2" v-text="'mdi-linkedin'" />
-                        <x-link href="https://www.linkedin.com/in/adam-leis-75018b23/" v-text="'LinkedIn'" />
+                    <v-list-item v-for="link in links" :key="link.icon">
+                        <github-icon v-if="link.icon === 'github'" class="mr-2 primary--text" />
+                        <v-icon
+                            v-else
+                            color="primary"
+                            class="mr-2"
+                            v-text="link.icon"
+                        />
+                        <x-link :href="link.href" v-text="link.text" />
                     </v-list-item>
                 </v-list>
                 <p>References are available upon request.</p>
@@ -86,10 +90,12 @@
 <script>
 import sectionMixin from './section.mixin.js';
 import vueRecaptcha from 'vue-recaptcha';
+import githubIcon from '../icon-github';
 
 export default {
     components: {
         vueRecaptcha,
+        githubIcon,
     },
 
     mixins: [
@@ -117,6 +123,21 @@ export default {
         emailError: false,
         emailing: false,
         recaptchaToken: '',
+        links: [
+            {
+                icon: 'mdi-facebook',
+                text: 'Facebook',
+                href: 'https://www.facebook.com/people/Adam-Leis/20927251',
+            }, {
+                icon: 'github',
+                text: 'GitHub',
+                href: 'https://github.com/Made-of-Clay/adamleis',
+            }, {
+                icon: 'mdi-linkedin',
+                text: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/adam-leis-75018b23/',
+            },
+        ],
     }),
     computed: {
         nameRules: vm => ['required', 'nameLength'].map(rule => vm.rules[rule]),
@@ -148,11 +169,9 @@ export default {
 
     methods: {
         resetValidation() {
-            this.feedback = '';
             this.$refs.form.resetValidation();
         },
         clear() {
-            this.feedback = '';
             this.$refs.form.reset();
         },
         validate() {
@@ -186,6 +205,9 @@ export default {
                 .then(feedback => {
                     this.feedback = feedback;
                     if (!this.emailError) {
+                        setTimeout(() => {
+                            this.feedback = ''; // doing this instead of v-snackbar so errors don't disappear too quickly
+                        }, 5000);
                         this.resetCaptcha();
                         this.clear();
                         this.resetValidation();
