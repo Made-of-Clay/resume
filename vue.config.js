@@ -8,7 +8,7 @@ module.exports = {
         config
             .plugin('html')
             .tap(args => {
-                args[0].title = 'Victorious - The Victory Tracker';
+                args[0].title = 'Adam Leis | Online Resume';
                 return args;
             });
     }
