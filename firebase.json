@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "adamleis",
+    "site": "resume-adamleis",
     "public": "dist",
     "ignore": [
       "firebase.json",

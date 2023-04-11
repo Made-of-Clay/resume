@@ -6,7 +6,8 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "report": "vue-cli-service build --report",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "firebase-deploy": "firebase deploy --only hosting:resume-adamleis"
     },
     "dependencies": {
         "core-js": "^3.6.4",
