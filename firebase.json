@@ -11,6 +11,10 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "AdamLeis-resume.pdf",
+        "destination": "/AdamLeis-resume.pdf"
       }
     ]
   }
