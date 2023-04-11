@@ -16,7 +16,7 @@
                 <img :src="photo" alt="Photo of Adam Leis">
             </figure>
 
-            <p>I have a wonderful wife, an amazing son, and another son on the way! Much of the work I do is to provide the best, blessing-filled life for them that I can.</p>
+            <p>I have a wonderful wife and two amazing sons! Much of the work I do is to provide the best, blessing-filled life for them that I can.</p>
 
             <p>As for me, I am a passionate learner who loves discovering new things, studying new topics, and marveling at how often seemingly-disparate topics and lessons overlap and mimic each other. A quick example of this is how Plato's Theory of Forms mimics object-oriented programming. To Plato, physical objects (objects) are only images (instances) of the truer forms (classes) they represent. A similar pattern is seen between blueprints or plans and an actual finished project. Who knew? (I am not the only one to recognize this, as a quick Google search will reveal, but being less novel does not make it less interesting.)</p>
 
