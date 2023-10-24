@@ -7,12 +7,12 @@ import Experience from "@components/home/Experience.astro";
 import ProjectsWrapper from "@components/general/ProjectsWrapper.astro";
 import MetaHead from "@components/general/MetaHead.astro";
 
-const featureProjects = info.projects.reduce((accumulator, project) => {
-  if (accumulator.length < 6 && project.isFeatured) {
-    accumulator.push(project);
-  }
-  return accumulator;
-}, []);
+// const featureProjects = info.projects.reduce((accumulator, project) => {
+//   if (accumulator.length < 6 && project.isFeatured) {
+//     accumulator.push(project);
+//   }
+//   return accumulator;
+// }, []);
 ---
 
 <!DOCTYPE html>
@@ -27,13 +27,15 @@ const featureProjects = info.projects.reduce((accumulator, project) => {
 
   <body>
     <Layout>
-      <Hero name={info.name} about={info.about} />
-      <Experience title={"EXPERIENCE"} details={info.experience} />
-      <Experience title={"EDUCATION"} details={info.education} />
-      <section>
+      <!-- Hero will be replaced by Base header (and other replacement components) -->
+      <!-- <Hero name={info.name} about={info.about} /> -->
+      <!-- TODO consider using something like Experience component -->
+      <!-- <Experience title={"EXPERIENCE"} details={info.experience} />
+      <Experience title={"EDUCATION"} details={info.education} /> -->
+      <!-- <section>
         <h2 class="w-[15rem] dark:text-light mt-16">FEATURE PROJECTS</h2>
         <ProjectsWrapper projects={featureProjects} />
-      </section>
+      </section> -->
     </Layout>
   </body>
 </html>
