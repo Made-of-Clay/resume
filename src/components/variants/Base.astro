@@ -1,5 +1,6 @@
 ---
-import "../styles/style.css";
+import "../../styles/style.css";
+import { Content as OverviewContent } from "../../data/overview.md";
 ---
 
 <main role="main" class="container">
@@ -15,22 +16,19 @@ import "../styles/style.css";
     <!-- TODO replace this with something more dynamic so changing job titles is easier -->
   </header>
 
-  <article>
-    <section>
-      <h2>Overview (or whatever)</h2>
-      <div>
-        <p>some descriptive text about me</p>
-      </div>
+  <article class="baseResume">
+    <section class="baseResume__overview">
+      <OverviewContent />
     </section>
 
-    <section>
+    <section class="baseResume__experience">
       <h2>Experience</h2>
       <div>
         <!-- list of components detailing work exp. -->
       </div>
     </section>
 
-    <section>
+    <section class="baseResume__skills">
       <h2>Skills</h2>
       <div>
         <!-- some good way to list compitent skillset -->
@@ -42,7 +40,7 @@ import "../styles/style.css";
     <picture></picture>
     <img src="" alt="">
     
-    <section>
+    <section class="baseResume__about">
       <h2>
         about me
       </h2>
@@ -51,14 +49,14 @@ import "../styles/style.css";
       </div>
     </section>
 
-    <section>
+    <section class="baseResume__education">
       <h2>Education</h2>
       <div>
         list of education
       </div>
     </section>
 
-    <section>
+    <section class="baseResume__rnd">
       <h2>R&D</h2>
       <ul>
         <!-- list of research topics -->
