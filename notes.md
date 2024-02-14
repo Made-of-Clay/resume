@@ -1,5 +1,75 @@
 # Adam Leis Personal Website
 
+TODO: structure
+
+```
+article
+    header
+        h1{name}
+        h2{title}
+        img#photo
+    main
+        section#experience
+            ol > li * n
+                h3 + time + ul>li*n
+        section#about
+            h2 + ul > li * n
+        section#education
+            h2 + ul > li * n
+    footer
+        ul > li * n
+```
+
+proposed data
+
+```yml
+name: Adam Leis
+title: Front-end Developer
+photo: /images/me.jpg
+experience:
+    1. company: Intellectric Technology, Inc.
+        start: 08/20
+        end: null
+        title: Software Engineer
+        work:
+        - did things
+        - also did stuff
+    2. company: 'Rosenboom: Custom. Crafted. Cyclinders.'
+about:
+    # how can I obscure some of this from bots and spammers? maybe use pseudo content to render? bots might miss it
+    website: https://adamleis.com
+    email: adam.m.leis@gmail.com
+    phone: 419.996.9794
+education:
+    - school: Liberty University
+        degree: Master of Arts
+        focus: Christian Apologetics
+        graduated: May 2010
+    - school: Bowling Green State University
+        degree: Bachelor of Fine Arts
+        focus: Digital Art
+        graduated: Dec 2020
+skills:
+    - label: Proficient
+        list:
+        - HTML5/CSS3
+        - JavaScript/TypeScript
+        - Vue, React, React Native
+        - Vite / Webpack
+        - REST
+    - label: Working Knowledge
+        list:
+        - Node.js
+        - PHP
+        - C# .NET Core
+        - SQL, MySQL
+        - Google Firebase
+    - label: Novice
+        list:
+        - Python
+        - GraphQL
+```
+
 This will just be a dumping ground now for me. My digital presence... something for the
 feds to use to profile me better `;)`
 
