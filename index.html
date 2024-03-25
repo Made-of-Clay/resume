@@ -5,17 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <!-- <script async defer src="/skill.js"></script> -->
   </head>
   <body>
-    <div id="resume">
+    <article id="resume">
       <header>
         <div>
           <img src="/javascript.svg" alt="">
           <h1>
             Adam
             <span>Leis</span>
+            <small>Software Engineer</small>
           </h1>
-          <h2>Software Engineer</h2>
         </div>
 
         <div>
@@ -35,7 +36,96 @@
         </div>
       </header>
 
-    </div>
+      <main class="grid grid-cols-2 gap-4">
+        <div data-column="left" class="bg-slate-800">
+          <section id="experience">
+            <h2>
+              ⌛ Experience
+            </h2>
+            <ol>
+              <li>
+                <strong>
+                  Intellectual Technology, Inc.
+                  <b>Front-end Developer</b>
+                </strong>
+                <p>
+                  Lead front-end developer responsible for developing &amp; updating products, establishing standards, and working closely with UI designers to build in-house UI library of components.
+                </p>
+                <time datetime="2020-08">Aug. '20</time>
+                &mdash;
+                <em>Now</em>
+              </li>
+              <li>
+                <strong>
+                  Rosenboom Machine &amp; Tool
+                  <b>Software Engineer</b>
+                </strong>
+                <p>
+                  Began focusing on front-end to advance tech &amp; unify roughly 15 application UIs. Eventually became full stack using PHP CodeIgniter and Phalcon, [My]SQL, Node.js on back-end; Vue.js (jQuery before that) on front-end.
+                </p>
+                <time datetime="2014-11">Nov. '14</time>
+                &mdash;
+                <time datetime="2020-03">Mar. '20</time>
+              </li>
+              <li>
+                <strong>
+                  Various Small Companies
+                  <b>Dir. of Web Development, Front-end Developer, Web Developer</b>
+                </strong>
+                <p>
+                  Several small, local companies offering commercial websites to local businesses. WordPress (sometimes Drupal); often working directly with clients &amp; gathering their needs/wants.
+                </p>
+                <time datetime="2010-06">June. '10</time>
+                &mdash;
+                <time datetime="2014-11">Nov. '14</time>
+              </li>
+            </ol>
+          </section>
+        </div>
+
+        <div data-column="right" class="bg-slate-800">
+          <section id="skills">
+            <div class="relative w-20 h-20 mx-auto">
+              <skill-circle></skill-circle>
+              <svg class="w-full h-full" viewBox="0 0 100 100">
+                <circle
+                  class="text-gray-200 stroke-current"
+                  stroke-width="4"
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="transparent"
+                ></circle>
+                <!--
+                  stroke-dasharray="stroke gap"
+                  relative % first # is fill, remaining is gap
+                  2*(r*percentage)*3.14 == stroke
+                  2*r*3.14 == gap
+                -->
+                <circle
+                  class="text-blue-500 stroke-current origin-center -rotate-90"
+                  stroke-width="4"
+                  stroke-dasharray="141.5 283"
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="transparent"
+                ></circle>
+                <text
+                  x="50"
+                  y="50"
+                  dominant-baseline="middle"
+                  text-anchor="middle"
+                  class="text-lg font-bold fill-gray-200"
+                >
+                  HTML
+                </text>
+              </svg>
+            </div>
+          </section>
+        </div>
+      </main>
+    </article>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
